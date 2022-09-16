@@ -1,0 +1,35 @@
+<div class="d-flex flex-wrap">
+    <div class="d-flex col-12 justify-content-center">
+        <h2>Existing Powers</h2>
+    </div>
+    <div class="d-flex flex-wrap col-12">
+        <div class="col-6 col-md-3 d-flex flex-column" *ngFor="let power of powers$ | async">
+            <div class="d-flex flex-column col-10 align-items-center">
+                <h3>{{ power.name }}</h3>
+                <h4>Description</h4>
+                <div class="px-2">{{ power.description }}</div>
+                <div class="">
+                    <a href="/power/{{power._id}}">Power Page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 d-flex flex-wrap justify-content-center">
+        <div class="col-12 d-flex justify-content-center">
+            <h2>Add Power!</h2>
+        </div>
+        <form class="d-flex flex-column" method="post" action="http://localhost:3000/power" (onSubmit)="createPower()">
+            <div class="form-group my-1">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name of Power" />
+            </div>
+            <div class="form-group my-1">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" class="form-control" placeholder="Enter the description of the power"></textarea>
+            </div>
+            <div class="form-group my-1">
+                <button type="submit" class="btn btn-primary form-control">Create!</button>
+            </div>
+        </form>
+    </div>
+</div>

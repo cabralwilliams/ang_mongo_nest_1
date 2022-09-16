@@ -1,0 +1,10 @@
+<header class="d-flex px-2 flex-wrap align-items-center bg-light">
+    <div class="col-12 col-md-3 d-flex justify-content-center">
+        <h1 class="text-dark">Hero Registry</h1>
+    </div>
+    <nav class="col-12 col-md-9 d-flex flex-wrap">
+        <div *ngFor="let link of links" class="col-6 col-md-2 text-center">
+            <a class="text-dark text-decoration-none px-3" routerLink="/{{link.href}}">{{link.name}}</a>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,9 @@
+<div class="d-flex flex-wrap col-12">
+    <div class="col-6 col-md-3 d-flex flex-column" *ngFor="let p of power | async">
+        <div class="d-flex flex-column col-10 align-items-center">
+            <h3>{{ p.name }}</h3>
+            <h4>Description</h4>
+            <div class="px-2">{{ p.description }}</div>
+        </div>
+    </div>
+</div>
