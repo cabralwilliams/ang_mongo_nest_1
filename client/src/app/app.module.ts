@@ -6,6 +6,8 @@ import { PowerModule } from './power/power.module';
 import { PowerDetailModule } from './power-detail/power-detail.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import { HeroesModule } from './heroes/heroes.module';
+import { HeroDetailModule } from './hero-detail/hero-detail.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     AppRoutingModule,
     PowerModule,
-    PowerDetailModule
+    PowerDetailModule,
+    HeroesModule,
+    HeroDetailModule
   ],
   providers: [],
   bootstrap: [AppComponent]

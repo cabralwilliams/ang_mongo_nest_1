@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class PowerComponent implements OnInit {
 
   powers$: Observable<any> | undefined;
-  postUrl: string = `http://localhost:3000/power`;
+  postUrl: string = `http://localhost:3000/api/powers`;
 
   constructor(private powerService: PowerService) { }
 

@@ -1,0 +1,32 @@
+<div class="d-flex flex-wrap" *ngFor="let data of data$ | async">
+    <div class="col-12 d-flex flex-column align-items-center">
+        <h2>{{data.hero.name}}</h2>
+        <div>Secret Identity: {{data.hero.secret_identity}}</div>
+        <div class="d-flex flex-column align-items-center">
+            <h3>Known Superpowers</h3>
+            <div class="d-flex flex-wrap justify-content-evenly">
+                <div class="px-2" *ngFor="let power of data.hero.powers">
+                    {{power.name}}
+                </div>
+            </div>
+            <h3>Team Memberships</h3>
+            <div class="d-flex flex-wrap justify-content-evenly">
+                <div class="px-2" *ngFor="let org of data.hero.organizations">
+                    {{org.name}}
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column align-items-center bg-light">
+            <h3>Edit Superpowers</h3>
+            <form class="d-flex flex-column">
+                <div class="form-check" *ngFor="let power of data.powers">
+                    <input type="checkbox" class="form-check-input" value="{{power._id}}" id="{{power._id}}" name="powerIds" />
+                    <label for="{{power._id}}" class="form_check-label">{{power.name}}</label>
+                </div>
+                <div class="form-control">
+                    <button type="button" class="btn btn-primary" (click)="updatePowers()">Update Powers!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

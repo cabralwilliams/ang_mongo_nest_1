@@ -3,7 +3,8 @@ import { LinkInterface, createLink } from '../utils/ob-generator';
 
 const links: LinkInterface[] = [
   createLink('Home','home'),
-  createLink('Powers','powers')
+  createLink('Powers','powers'),
+  createLink('Heroes','heroes')
 ];
 
 @Component({

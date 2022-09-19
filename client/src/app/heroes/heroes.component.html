@@ -1,0 +1,45 @@
+<div class="d-flex flex-wrap">
+    <div class="d-flex flex-column align-items-center col-12">
+        <h2>Existing Heroes</h2>
+    </div>
+    <div class="d-flex col-12 justify-content-center">
+        <div class="d-flex flex-wrap col-11">
+            <div class="d-flex flex-column col-6 col-md-4" *ngFor="let hero of heroes$ | async">
+                <div class="d-flex flex-column align-items-center">
+                    <h3 class="col-12 text-center">{{hero.name}}</h3>
+                    <div class="col-12 d-flex justify-content-center">
+                        <a href="/heroes/{{hero._id}}" class="text-decoration-none">Edit!</a>
+                    </div>
+                </div>
+                <div class="d-flex flex-column align-items-center col-12">
+                    <h3>Secret Identity</h3>
+                    <div>{{hero.secret_identity}}</div>
+                </div>
+                <div class="d-flex flex-column align-items-center col-12">
+                    <h3>Powers</h3>
+                    <div class="d-flex flex-wrap col-10">
+                        <div class="col-6 col-md-4" *ngFor="let power of hero.powers">
+                            <div>{{power.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column align-items-center col-12">
+        <h3>Add Hero!</h3>
+        <form class="d-flex flex-column col-12 col-md-8 align-items-center" method="post" action="http://localhost:3000/api/heroes">
+            <div class="form-group col-12 col-md-6 my-2">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Hero Name" class="form-control"/>
+            </div>
+            <div class="form-group col-12 col-md-6 my-2">
+                <label for="secret_identity">Secret Identity</label>
+                <input type="text" id="secret_identity" name="secret_identity" placeholder="Secret Identity" class="form-control"/>
+            </div>
+            <div class="form-group my-2">
+                <button type="submit" class="btn btn-primary">Create!</button>
+            </div>
+        </form>
+    </div>
+</div>
