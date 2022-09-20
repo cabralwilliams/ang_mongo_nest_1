@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PowerService {
+export class TeamsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getPowers() {
-    return this.httpClient.get(`${environment.apiUrl}/powers`);
+  getTeams() {
+    return this.httpClient.get(`${environment.apiUrl}/teams`);
   }
 }

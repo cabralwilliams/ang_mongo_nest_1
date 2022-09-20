@@ -22,6 +22,11 @@ export class ApiController {
     private powerService: PowerService,
   ) {}
 
+  @Get('powers')
+  getAllPowers() {
+    return this.powerService.findAll();
+  }
+
   @Get('heroes')
   getAllHeroes() {
     return this.heroService.findAll();
@@ -35,6 +40,7 @@ export class ApiController {
 
   @Get('heroes/:_id')
   getHeroById(@Param('_id') _id: string) {
+    console.log('Trying to get data about 1 hero');
     return this.heroService.findById(_id);
   }
 
@@ -62,9 +68,42 @@ export class ApiController {
   @Get('hero/edit/:_id')
   async getHeroAndExistingPowersAndTeams(@Param() _id: string) {
     const heroes = await this.heroService.findById(_id);
-    const powers = await this.powerService.findAll();
+    let powers = await this.powerService.findAll();
+    const converted = powers.map((p) => {
+      const out = { ...p }['_doc'];
+      out.checked = false;
+      for (let i = 0; i < heroes[0].powers.length; i++) {
+        if (out.name === heroes[0].powers[i].name) {
+          out.checked = true;
+          break;
+        }
+      }
+      return out;
+    });
+    console.log('Converted');
+    console.log(converted);
+    // console.log(Object.keys(converted[0]));
+    // console.log(converted[0]['_doc']);
+    // console.log(powers);
+    powers = powers.map((p) => {
+      const out = {
+        name: p.name,
+        description: p.description,
+        checked: false,
+      };
+      let powerFound = false;
+      for (let i = 0; i < heroes[0].powers.length; i++) {
+        if (heroes[0].powers[i].name === p.name) {
+          powerFound = true;
+          break;
+        }
+      }
+      out.checked = powerFound;
+      return out;
+    });
+    // console.log(powers);
     const organizations = await this.teamService.findAll();
-    return [{ hero: heroes[0], powers, organizations }];
+    return [{ hero: heroes[0], powers: converted, organizations }];
   }
 
   @Post('powers')

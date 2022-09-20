@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HeroesModule } from './heroes/heroes.module';
 import { HeroDetailModule } from './hero-detail/hero-detail.module';
+import { TeamsModule } from './teams/teams.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HeroDetailModule } from './hero-detail/hero-detail.module';
     PowerModule,
     PowerDetailModule,
     HeroesModule,
-    HeroDetailModule
+    HeroDetailModule,
+    TeamsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

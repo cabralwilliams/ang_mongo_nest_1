@@ -1,0 +1,13 @@
+<div class="d-flex flex-wrap">
+    <div class="col-12 d-flex flex-column align-items-center">
+        <h2>Existing Teams</h2>
+        <div class="col-10 d-flex flex-wrap">
+            <div class="d-flex flex-column align-items-center col-6 col-md-3" *ngFor="let team of teams$ | async">
+                <h3>{{team.name}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 d-flex flex-column align-items-center">
+        <h2>Add Team!</h2>
+    </div>
+</div>

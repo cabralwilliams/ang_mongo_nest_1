@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PowerService } from './power.service';
 // import { PowerInterface } from '../utils/ob-generator';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-power',
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 export class PowerComponent implements OnInit {
 
   powers$: Observable<any> | undefined;
-  postUrl: string = `http://localhost:3000/api/powers`;
+  postUrl: string = `${environment.apiUrl}/powers`;
 
   constructor(private powerService: PowerService) { }
 

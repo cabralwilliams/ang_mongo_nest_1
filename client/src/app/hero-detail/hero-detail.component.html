@@ -20,8 +20,14 @@
             <h3>Edit Superpowers</h3>
             <form class="d-flex flex-column">
                 <div class="form-check" *ngFor="let power of data.powers">
-                    <input type="checkbox" class="form-check-input" value="{{power._id}}" id="{{power._id}}" name="powerIds" />
-                    <label for="{{power._id}}" class="form_check-label">{{power.name}}</label>
+                    <div class="form-check" *ngIf="power.checked">
+                        <input type="checkbox" class="form-check-input" value="{{power._id}}" id="{{power._id}}" name="powerIds" checked />
+                        <label for="{{power._id}}" class="form_check-label">{{power.name}}</label>
+                    </div>
+                    <div class="form-check" *ngIf="!power.checked">
+                        <input type="checkbox" class="form-check-input" value="{{power._id}}" id="{{power._id}}" name="powerIds"  />
+                        <label for="{{power._id}}" class="form_check-label">{{power.name}}</label>
+                    </div>
                 </div>
                 <div class="form-control">
                     <button type="button" class="btn btn-primary" (click)="updatePowers()">Update Powers!</button>

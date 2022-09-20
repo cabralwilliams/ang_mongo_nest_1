@@ -4,6 +4,7 @@ import { PowerComponent } from './power/power.component';
 import { PowerDetailComponent } from './power-detail/power-detail.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { TeamsComponent } from './teams/teams.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
     component: PowerComponent
   },
   {
-    path: 'power/:_id',
+    path: 'powers/:_id',
     component: PowerDetailComponent
   },
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'heroes/:_id',
     component: HeroDetailComponent
+  },
+  {
+    path: 'teams',
+    component: TeamsComponent
   }
 ];
 
