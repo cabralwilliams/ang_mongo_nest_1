@@ -10,7 +10,7 @@ export class Hero {
   @Prop({ required: true })
   name: string;
 
-  @Prop({ require: true, default: 'none/unknown' })
+  @Prop({ required: true, default: 'none/unknown' })
   secret_identity: string;
 
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId }], ref: 'Power' })

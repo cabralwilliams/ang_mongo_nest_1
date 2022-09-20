@@ -9,5 +9,25 @@
     </div>
     <div class="col-12 d-flex flex-column align-items-center">
         <h2>Add Team!</h2>
+        <form class="d-flex flex-column bg-light align-items-center">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="name" placeholder="Team Name" />
+            </div>
+            <div>
+                <div class="py-2">Good or Evil?</div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="good" name="isGood" value="good" />
+                    <label class="form-check-label" for="good">Good!</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="evil" name="isGood" value="evil" />
+                    <label class="form-check-label" for="evil">Evil!</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary px-2" (click)="createTeam()">Create!</button>
+            </div>
+        </form>
     </div>
 </div>

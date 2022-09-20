@@ -9,11 +9,13 @@ import { HeaderComponent } from './header/header.component';
 import { HeroesModule } from './heroes/heroes.module';
 import { HeroDetailModule } from './hero-detail/hero-detail.module';
 import { TeamsModule } from './teams/teams.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

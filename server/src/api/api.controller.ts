@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Put,
-  Redirect,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put } from '@nestjs/common';
 import { HeroService } from './hero/hero.service';
 import { TeamService } from './team/team.service';
 import { CreateHeroDto } from 'src/dto/create-hero';
@@ -27,13 +19,17 @@ export class ApiController {
     return this.powerService.findAll();
   }
 
+  @Get('powers/:_id')
+  getPowerById(@Param('_id') _id: string) {
+    return this.powerService.findById(_id);
+  }
+
   @Get('heroes')
   getAllHeroes() {
     return this.heroService.findAll();
   }
 
   @Post('heroes')
-  @Redirect('http://localhost:4200/heroes')
   createHero(@Body() createHeroDto: CreateHeroDto) {
     return this.heroService.create(createHeroDto);
   }
@@ -53,6 +49,12 @@ export class ApiController {
   @Post('teams')
   createTeam(@Body() createTeamDto: CreateTeamDto) {
     return this.teamService.create(createTeamDto);
+  }
+
+  @Put('heroes/:heroId/organizations')
+  updateHeroTeams(@Param('heroId') heroId: string, @Body() body: any) {
+    console.log('Trying to update hero organizations');
+    return this.heroService.adjustHeroTeams(heroId, body.organizationIds);
   }
 
   @Get('teams')
@@ -103,7 +105,21 @@ export class ApiController {
     });
     // console.log(powers);
     const organizations = await this.teamService.findAll();
-    return [{ hero: heroes[0], powers: converted, organizations }];
+    const transformed = organizations.map((o) => {
+      const out = { ...o }['_doc'];
+      out.checked = false;
+      for (let i = 0; i < heroes[0].organizations.length; i++) {
+        if (heroes[0].organizations[i].name === o.name) {
+          out.checked = true;
+          break;
+        }
+      }
+      return out;
+    });
+
+    console.log(transformed);
+
+    return [{ hero: heroes[0], powers: converted, organizations: transformed }];
   }
 
   @Post('powers')

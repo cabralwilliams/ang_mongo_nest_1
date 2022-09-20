@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex flex-column align-items-center bg-light">
+        <div class="d-flex flex-column align-items-center bg-light my-3">
             <h3>Edit Superpowers</h3>
             <form class="d-flex flex-column">
                 <div class="form-check" *ngFor="let power of data.powers">
@@ -31,6 +31,24 @@
                 </div>
                 <div class="form-control">
                     <button type="button" class="btn btn-primary" (click)="updatePowers()">Update Powers!</button>
+                </div>
+            </form>
+        </div>
+        <div class="d-flex flex-column align-items-center bg-light my-3">
+            <h3>Edit Organizations</h3>
+            <form class="d-flex flex-column">
+                <div class="form-check" *ngFor="let organization of data.organizations">
+                    <div class="form-check" *ngIf="organization.checked">
+                        <input type="checkbox" class="form-check-input" value="{{organization._id}}" id="{{organization._id}}" name="organizationIds" checked />
+                        <label for="{{organization._id}}" class="form_check-label">{{organization.name}}</label>
+                    </div>
+                    <div class="form-check" *ngIf="!organization.checked">
+                        <input type="checkbox" class="form-check-input" value="{{organization._id}}" id="{{organization._id}}" name="organizationIds"  />
+                        <label for="{{organization._id}}" class="form_check-label">{{organization.name}}</label>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <button type="button" class="btn btn-primary" (click)="updateOrganizations()">Update Organizations!</button>
                 </div>
             </form>
         </div>

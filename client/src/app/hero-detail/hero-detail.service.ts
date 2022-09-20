@@ -10,11 +10,11 @@ export class HeroDetailService {
   constructor(private httpClient: HttpClient) { }
 
   getHeroDataPlus(_id: string) {
-    return this.httpClient.get(`http://localhost:3000/api/hero/edit/${_id}`);
+    return this.httpClient.get(`${environment.apiUrl}/hero/edit/${_id}`);
   }
 
   updateHeroPowers(_id: string, body: any) {
-    return this.httpClient.put(`http://localhost:3000/api/heroes/${_id}/powers`, body, { headers: {
+    return this.httpClient.put(`${environment.apiUrl}/heroes/${_id}/powers`, body, { headers: {
       "Content-type": "application/json"
     }});
   }

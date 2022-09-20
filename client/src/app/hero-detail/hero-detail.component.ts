@@ -42,4 +42,22 @@ export class HeroDetailComponent implements OnInit {
       console.log(response.status, response.statusText);
     }
   }
+
+  async updateOrganizations() {
+    const organizationIds = document.querySelectorAll('input[name="organizationIds"]') as unknown as HTMLInputElement[];
+    console.log(organizationIds);
+    const checkedIds = Array.from(organizationIds).filter(c => c.checked).map(c => c.id);
+    console.log(checkedIds);
+    console.log(this.heroId);
+    const response = await fetch(`${environment.apiUrl}/heroes/${this.heroId}/organizations`, {
+      method: 'PUT',
+      body: JSON.stringify({ organizationIds: checkedIds }),
+      headers: { "Content-type": "application/json"}
+    });
+    if(response.ok) {
+      window.location.reload();
+    } else {
+      console.log(response.status, response.statusText);
+    }
+  }
 }
