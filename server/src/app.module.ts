@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { PowerModule } from './power/power.module';
 import { ApiModule } from './api/api.module';
 import { HeroModule } from './hero/hero.module';
+import { StoryModule } from './story/story.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { HeroModule } from './hero/hero.module';
     PowerModule,
     ApiModule,
     HeroModule,
+    StoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

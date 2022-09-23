@@ -1,0 +1,36 @@
+<div class="d-flex flex-column align-items-center my-2">
+    <p class="col-12 col-md-10 px-3">
+        What is the point of superheroes and supervillains if there are not stories about those 
+        heroes and villains?  Click a link below to read about the adventures of these powerful 
+        individuals and their teams.  Or, if you are feeling especially creative, why not write 
+        a new adventure?!?
+    </p>
+    <div class="col-12 col-md-10 d-flex flex-wrap">
+        <div class="col-12 d-flex justify-content-center">
+            <h3>Library</h3>
+        </div>
+        <div class="d-flex flex-wrap col-12 md-col-10">
+            <div class="col-6 col-md-3 d-flex flex-column align-items-center" *ngFor="let story of stories$ | async">
+                <a routerLink="/stories/{{story._id}}" class="text-decoration-none">
+                    <h4>{{story.title}}</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+        <h3 class="px-5 col-12">Tell a Story!</h3>
+        <form class="d-flex flex-column bg-light col-12 col-md-10">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" placeholder="Title" class="form-control" />
+            </div>
+            <div class="form-group my-1">
+                <label for="text">Story Text</label>
+                <textarea name="text" id="text" class="form-control" placeholder="Once upon a time..."></textarea>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <button type="button" class="btn btn-primary col-12" (click)="createStory()">Create!</button>
+            </div>
+        </form>
+    </div>
+</div>

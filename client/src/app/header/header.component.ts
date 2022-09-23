@@ -5,7 +5,8 @@ const links: LinkInterface[] = [
   createLink('Home','home'),
   createLink('Powers','powers'),
   createLink('Heroes','heroes'),
-  createLink('Teams','teams')
+  createLink('Teams','teams'),
+  createLink('Stories', 'stories')
 ];
 
 @Component({

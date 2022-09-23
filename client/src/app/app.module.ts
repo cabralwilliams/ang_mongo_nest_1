@@ -10,6 +10,9 @@ import { HeroesModule } from './heroes/heroes.module';
 import { HeroDetailModule } from './hero-detail/hero-detail.module';
 import { TeamsModule } from './teams/teams.module';
 import { HomeComponent } from './home/home.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { StoriesModule } from './stories/stories.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,14 @@ import { HomeComponent } from './home/home.component';
     PowerDetailModule,
     HeroesModule,
     HeroDetailModule,
-    TeamsModule
+    TeamsModule,
+    StoriesModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,6 +6,10 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { TeamsComponent } from './teams/teams.component';
 import { HomeComponent } from './home/home.component';
+import { StoriesComponent } from './stories/stories.component';
+import { StoriesHomeComponent } from './stories/stories-home/stories-home.component';
+// import { StoriesComponent } from './stories/stories.component';
+// import { StoriesHomeComponent } from './stories/stories-home/stories-home.component';
 
 const routes: Routes = [
   {
@@ -35,6 +39,16 @@ const routes: Routes = [
   {
     path: 'teams',
     component: TeamsComponent
+  },
+  {
+    path: 'stories',
+    component: StoriesComponent,
+    children: [
+      {
+        path: '',
+        component: StoriesHomeComponent
+      }
+    ]
   }
 ];
 

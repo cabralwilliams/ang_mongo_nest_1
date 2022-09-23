@@ -8,6 +8,8 @@ import { Power, PowerSchema } from 'src/schemas/power.schema';
 import { TeamService } from './team/team.service';
 import { Team, TeamSchema } from 'src/schemas/team.schema';
 import { PowerService } from 'src/power/power.service';
+import { StoryService } from './story/story.service';
+import { Story, StorySchema } from 'src/schemas/story.schema';
 
 @Module({
   imports: [
@@ -15,9 +17,10 @@ import { PowerService } from 'src/power/power.service';
       { name: Hero.name, schema: HeroSchema },
       { name: Power.name, schema: PowerSchema },
       { name: Team.name, schema: TeamSchema },
+      { name: Story.name, schema: StorySchema },
     ]),
   ],
   controllers: [ApiController],
-  providers: [ApiService, HeroService, TeamService, PowerService],
+  providers: [ApiService, HeroService, TeamService, PowerService, StoryService],
 })
 export class ApiModule {}

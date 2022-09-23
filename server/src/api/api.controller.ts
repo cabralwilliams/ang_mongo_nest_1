@@ -5,6 +5,8 @@ import { CreateHeroDto } from 'src/dto/create-hero';
 import { CreateTeamDto } from 'src/dto/create-team';
 import { CreatePowerDto } from 'src/dto/create-power';
 import { PowerService } from 'src/power/power.service';
+import { StoryService } from './story/story.service';
+import { CreateStoryDto } from 'src/dto/create-story';
 
 @Controller('api')
 export class ApiController {
@@ -12,6 +14,7 @@ export class ApiController {
     private heroService: HeroService,
     private teamService: TeamService,
     private powerService: PowerService,
+    private storyService: StoryService
   ) {}
 
   @Get('powers')
@@ -125,5 +128,20 @@ export class ApiController {
   @Post('powers')
   createPower(@Body() createPowerDto: CreatePowerDto) {
     return this.powerService.create(createPowerDto);
+  }
+
+  @Get('stories')
+  getAllStories() {
+    return this.storyService.findAll();
+  }
+
+  @Get('stories/:_id')
+  getStoryById(@Param() _id: string) {
+    return this.storyService.findStoryById(_id);
+  }
+
+  @Post('stories')
+  createStory(@Body() createStoryDto: CreateStoryDto) {
+    return this.storyService.create(createStoryDto);
   }
 }
